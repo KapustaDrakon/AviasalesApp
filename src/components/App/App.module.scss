@@ -1,0 +1,20 @@
+@import '../../index.scss';
+
+@media (max-width: 800px) {
+  .section__container {
+    flex-direction: column;
+  }
+
+  .section__content {
+    margin-left: auto;
+  }
+}
+
+.section__container {
+  display: flex;
+  justify-content: center;
+}
+
+.section__content {
+  margin-right: auto;
+}

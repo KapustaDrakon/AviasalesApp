@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'Open Sans';
+  src: url('./assets/font/OpenSans-Regular.ttf') format('truetype');
+}
+
+$whiteBody: #f3f7fa;
+$white: #ffffff;
+$lightgray: #a0b0b9;
+$lightblue: #2196f3;
+$gray: #4a4a4a;
+$labelHover: #f1fcff;
+$grayBorder: #dfe5ec;
+
+body {
+  font-family: 'Open Sans';
+  box-sizing: border-box;
+  background-color: $whiteBody;
+  margin: 0;
+  letter-spacing: 0.5px;
+  line-height: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}

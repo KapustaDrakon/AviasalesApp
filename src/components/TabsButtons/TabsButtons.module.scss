@@ -1,0 +1,130 @@
+@import '../../index.scss';
+
+@media (max-width: 800px) {
+  .tabs__buttons {
+    width: 504px;
+  }
+
+  .button {
+    width: 168px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 420px) {
+  .tabs__buttons {
+    width: 420px;
+  }
+
+  .button {
+    width: 150px;
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 801px) {
+  .button {
+    width: 168px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 544px) {
+  .tabs__buttons {
+    width: 380px;
+  }
+
+  .button {
+    width: 126.5px;
+    font-size: 10px;
+  }
+}
+
+.tabs__container {
+  margin-bottom: 20px;
+}
+
+.tabs__buttons {
+  display: block;
+  margin: 0 auto 0 auto;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  height: 50px;
+}
+
+.button {
+  /*width: 168px;*/
+  height: 50px;
+  background-color: $white;
+  border: 1px solid $grayBorder;
+  letter-spacing: 0.5px;
+  line-height: 20px;
+  font-weight: 600;
+  color: $gray;
+  padding: 0;
+}
+
+.button:active,
+.button:focus {
+  color: $white;
+  background-color: $lightblue;
+}
+
+.first-tab {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.second-tab {
+  border-left: none;
+  border-right: none;
+}
+
+.third-tab {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+/*
+.ant-tabs-nav-list {
+  width: 502px;
+  display: flex !important;
+  height: 50px !important;
+  background-color: #ffffff !important;
+}
+
+.ant-tabs-nav {
+  width: 502px;
+}
+
+.ant-tabs-nav::before {
+  display: none;
+}
+.ant-tabs-nav-wrap::before,
+.ant-tabs-nav-wrap::after {
+  display: none;
+}
+
+.ant-tabs-tab {
+  margin-left: 0 !important;
+  width: 168px;
+  display: flex !important;
+  justify-content: center !important;
+  background-color: inherit !important;
+  letter-spacing: 0.5px;
+  border: 1px solid #dfe5ec !important;
+}
+
+.ant-tabs-tab-btn {
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 600;
+}
+
+.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #ffffff !important;
+}
+
+.ant-tabs-tab-active {
+  background-color: #2196f3 !important;
+  width: 168px !important;
+}*/
