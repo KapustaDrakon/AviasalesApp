@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import './Filter.scss';
 
 const Filter = (props) => {
-  console.log('PROPS >', props.filter);
   return (
     <form id="form_filter" className="filter__container">
       <div className="filter__title">КОЛИЧЕСТВО ПЕРЕСАДОК</div>
