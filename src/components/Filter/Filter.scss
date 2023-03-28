@@ -6,12 +6,20 @@
     margin-bottom: 20px;
     width: 504px;
   }
+
+  .filter__label {
+    width: 484px;
+  }
 }
 
 @media (min-width: 801px) {
   .filter__container {
     margin-right: 20px;
     width: 232px;
+  }
+
+  .filter__label {
+    width: 212px;
   }
 }
 
@@ -21,6 +29,10 @@
     margin: auto;
     margin-right: auto;
     margin-bottom: 20px;
+  }
+
+  .filter__label {
+    width: 360px;
   }
 }
 
@@ -42,6 +54,7 @@
 
 .filter__checkbox-container {
   font-weight: 400;
+  width: inherit;
   font-size: 13px;
   line-height: 20px;
 }
@@ -55,17 +68,37 @@
   width: 20px;
   height: 20px;
   margin-right: 10px;
+  margin-left: 0;
+  position: relative;
+  visibility: hidden;
+}
+
+.filter__input::before {
+  visibility: visible;
+  content: '';
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  border: 1px solid $lightblue;
+  border-radius: 3px;
+}
+
+.filter__input:checked::before {
+  background-color: $white;
+  background: url('../../assets/images/Shape.png') no-repeat center;
 }
 
 .filter__label {
   display: flex;
   align-items: center;
-  width: 232px;
   height: 40px;
-  width: 212px;
   padding-left: 20px;
 }
 
+/*
 .ant-checkbox {
   display: block;
   top: 0 !important;
@@ -94,3 +127,4 @@
 .ant-checkbox-checked::after {
   visibility: hidden !important;
 }
+*/

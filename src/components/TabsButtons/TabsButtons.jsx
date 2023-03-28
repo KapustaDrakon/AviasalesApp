@@ -1,28 +1,73 @@
 import React from 'react';
-//import { Tabs } from 'antd';
+import { connect } from 'react-redux';
 
 import classes from './TabsButtons.module.scss';
 
-const TabsButtons = () => {
-  /*return (
-    <section className="tabs__container">
-      <Tabs className="tabs__buttons" defaultActiveKey="1" animated={false}>
-        <Tabs.TabPane tab="САМЫЙ ДЕШЕВЫЙ" key="1" className="first-tab"></Tabs.TabPane>
-        <Tabs.TabPane tab="САМЫЙ БЫСТРЫЙ" key="2" className="second-tab"></Tabs.TabPane>
-        <Tabs.TabPane tab="ОПТИМАЛЬНЫЙ" key="3" className="third-tab"></Tabs.TabPane>
-      </Tabs>
-    </section>
-  );*/
-
+const TabsButtons = (props) => {
   return (
     <section className={classes.tabs__container}>
       <div className={classes.tabs__buttons}>
-        <button className={`${classes['first-tab']} ${classes.button}`}>САМЫЙ ДЕШЕВЫЙ</button>
-        <button className={`${classes['second-tab']} ${classes.button}`}>САМЫЙ БЫСТРЫЙ</button>
-        <button className={`${classes['third-tab']} ${classes.button}`}>ОПТИМАЛЬНЫЙ</button>
+        <button
+          id="cheapest"
+          className={`${classes['cheapest']} ${classes.button} ${classes.button_pressed}`}
+          onClick={() => props.buttonPressed('cheapest')}
+        >
+          САМЫЙ ДЕШЕВЫЙ
+        </button>
+        <button
+          id="fastest"
+          className={`${classes['fastest']} ${classes.button}`}
+          onClick={() => props.buttonPressed('fastest')}
+        >
+          САМЫЙ БЫСТРЫЙ
+        </button>
+        <button
+          id="optimal"
+          className={`${classes['optimal']} ${classes.button}`}
+          onClick={() => props.buttonPressed('optimal')}
+        >
+          ОПТИМАЛЬНЫЙ
+        </button>
       </div>
     </section>
   );
 };
 
-export default TabsButtons;
+const mapStateToProps = (state) => {
+  return {
+    button: state,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    buttonPressed: (id) => {
+      const action = { type: id.toUpperCase() };
+      dispatch(action);
+
+      const buttonCheapest = document.getElementById('cheapest');
+      const buttonFastest = document.getElementById('fastest');
+      const buttonOptimal = document.getElementById('optimal');
+
+      if (id === 'cheapest') {
+        buttonCheapest.classList.add(classes.button_pressed);
+        buttonFastest.classList.remove(classes.button_pressed);
+        buttonOptimal.classList.remove(classes.button_pressed);
+      }
+
+      if (id === 'fastest') {
+        buttonFastest.classList.add(classes.button_pressed);
+        buttonCheapest.classList.remove(classes.button_pressed);
+        buttonOptimal.classList.remove(classes.button_pressed);
+      }
+
+      if (id === 'optimal') {
+        buttonOptimal.classList.add(classes.button_pressed);
+        buttonFastest.classList.remove(classes.button_pressed);
+        buttonCheapest.classList.remove(classes.button_pressed);
+      }
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TabsButtons);
