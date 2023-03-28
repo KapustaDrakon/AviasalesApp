@@ -21,8 +21,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix",
-    "format": "prettier ./src --write",
-    "prepare": "husky install"
+    "format": "prettier ./src --write"
   },
   "eslintConfig": {
     "extends": [
@@ -56,7 +55,6 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^2.8.4",
     "prop-types": "^15.8.1",
-    "vercel": "^28.16.15",
-    "husky": "^8.0.0"
+    "vercel": "^28.16.15"
   }
 }
