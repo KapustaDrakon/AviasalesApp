@@ -18,3 +18,20 @@
 .section__content {
   margin-right: auto;
 }
+
+.section__loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section__loadtext {
+  margin-right: 10px;
+}
+
+.section__error {
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

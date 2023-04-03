@@ -1,10 +1,16 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import reduxThunk from 'redux-thunk';
 
 import { actionTypeFilter } from './actionTypeFilter';
 
 const initialState = {
   button: 'cheapest',
   filter: ['empty'],
+  tickets: [],
+  showTickets: 5,
+  loading: true,
+  done: false,
+  error: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -50,11 +56,56 @@ const reducer = (state = initialState, action) => {
         filter: ['empty'],
       };
 
+    case 'FETCH_TICKETS_START':
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case 'FETCH_TICKETS_SUCCESS':
+      return {
+        ...state,
+        loading: false,
+        tickets: action.response,
+      };
+
+    case 'FETCH_TICKETS_DONE':
+      return {
+        ...state,
+        done: true,
+      };
+
+    case 'FETCH_TICKETS_FAIL':
+      return {
+        ...state,
+        loading: false,
+        error: 'Server Error',
+      };
+
+    case 'AMOUNT_SHOW_TICKETS':
+      return {
+        ...state,
+        showTickets: state.showTickets + 5,
+      };
+
     default:
       return state;
   }
 };
 
-const store = createStore(reducer);
+const loggerMiddleware = (/*store*/) => (next) => (action) => {
+  const result = next(action);
+  //console.log('Middleware > ', store.getState());
+  return result;
+};
+
+const composeEnhancers =
+  typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+        // Specify extension’s options like name, actionsDenylist, actionsCreators, serialize...
+      })
+    : compose;
+
+const store = createStore(reducer, composeEnhancers(applyMiddleware(loggerMiddleware, reduxThunk)));
 
 export default store;

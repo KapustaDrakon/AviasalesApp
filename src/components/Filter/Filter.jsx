@@ -1,5 +1,4 @@
 import { React } from 'react';
-//import { Checkbox } from 'antd';
 import { connect } from 'react-redux';
 
 import './Filter.scss';
