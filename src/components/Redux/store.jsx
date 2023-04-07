@@ -5,7 +5,7 @@ import { actionTypeFilter } from './actionTypeFilter';
 
 const initialState = {
   button: 'cheapest',
-  filter: ['empty'],
+  filter: ['all'],
   tickets: [],
   showTickets: 5,
   loading: true,

@@ -35,7 +35,7 @@ const TabsButtons = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    button: state,
+    button: state.button,
   };
 };
 

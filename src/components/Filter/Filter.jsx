@@ -14,6 +14,7 @@ const Filter = (props) => {
             id="all"
             name="Все"
             className="filter__input"
+            defaultChecked
             onChange={() => props.filterChange('all')}
           />
           Вce
@@ -24,6 +25,7 @@ const Filter = (props) => {
             id="without_changes"
             name="Без пересадок"
             className="filter__input"
+            defaultChecked
             onChange={() => props.filterChange('without_changes')}
           />
           Без пересадок
@@ -34,6 +36,7 @@ const Filter = (props) => {
             id="one_change"
             name="1 пересадка"
             className="filter__input"
+            defaultChecked
             onChange={() => props.filterChange('one_change')}
           />
           1 пересадка
@@ -44,6 +47,7 @@ const Filter = (props) => {
             id="two_changes"
             name="2 пересадки"
             className="filter__input"
+            defaultChecked
             onChange={() => props.filterChange('two_changes')}
           />
           2 пересадки
@@ -54,6 +58,7 @@ const Filter = (props) => {
             id="three_changes"
             name="3 пересадки"
             className="filter__input"
+            defaultChecked
             onChange={() => props.filterChange('three_changes')}
           />
           3 пересадки
@@ -65,7 +70,7 @@ const Filter = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    filter: state,
+    filter: state.filter,
   };
 };
 
@@ -79,19 +84,19 @@ const mapDispatchToProps = (dispatch) => {
       const buttonWithoutChanges = document.getElementById('without_changes');
       const buttonOneChange = document.getElementById('one_change');
       const buttonTwoChanges = document.getElementById('two_changes');
-      const buttonThreeCHanges = document.getElementById('three_changes');
+      const buttonThreeChanges = document.getElementById('three_changes');
 
       if (id === 'all' && buttonAll.checked === true) {
         buttonWithoutChanges.checked = true;
         buttonOneChange.checked = true;
         buttonTwoChanges.checked = true;
-        buttonThreeCHanges.checked = true;
+        buttonThreeChanges.checked = true;
         dispatch(action);
       } else if (id === 'all') {
         buttonWithoutChanges.checked = false;
         buttonOneChange.checked = false;
         buttonTwoChanges.checked = false;
-        buttonThreeCHanges.checked = false;
+        buttonThreeChanges.checked = false;
         action = { type: 'EMPTY' };
         dispatch(action);
       }
@@ -100,7 +105,7 @@ const mapDispatchToProps = (dispatch) => {
         buttonWithoutChanges.checked === true &&
         buttonOneChange.checked === true &&
         buttonTwoChanges.checked === true &&
-        buttonThreeCHanges.checked === true
+        buttonThreeChanges.checked === true
       ) {
         buttonAll.checked = true;
       }
@@ -109,7 +114,7 @@ const mapDispatchToProps = (dispatch) => {
         buttonWithoutChanges.checked === false &&
         buttonOneChange.checked === true &&
         buttonTwoChanges.checked === true &&
-        buttonThreeCHanges.checked === true
+        buttonThreeChanges.checked === true
       ) {
         buttonAll.checked = false;
       }
@@ -118,7 +123,7 @@ const mapDispatchToProps = (dispatch) => {
         buttonWithoutChanges.checked === true &&
         buttonOneChange.checked === false &&
         buttonTwoChanges.checked === true &&
-        buttonThreeCHanges.checked === true
+        buttonThreeChanges.checked === true
       ) {
         buttonAll.checked = false;
       }
@@ -127,7 +132,7 @@ const mapDispatchToProps = (dispatch) => {
         buttonWithoutChanges.checked === true &&
         buttonOneChange.checked === true &&
         buttonTwoChanges.checked === false &&
-        buttonThreeCHanges.checked === true
+        buttonThreeChanges.checked === true
       ) {
         buttonAll.checked = false;
       }
@@ -136,7 +141,7 @@ const mapDispatchToProps = (dispatch) => {
         buttonWithoutChanges.checked === true &&
         buttonOneChange.checked === true &&
         buttonTwoChanges.checked === true &&
-        buttonThreeCHanges.checked === false
+        buttonThreeChanges.checked === false
       ) {
         buttonAll.checked = false;
       }

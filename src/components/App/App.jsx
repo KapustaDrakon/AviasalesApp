@@ -47,6 +47,8 @@ class App extends React.Component {
   }
 
   render() {
+    const { error, loading } = this.props.state;
+
     return (
       <div>
         <Header />
@@ -54,16 +56,14 @@ class App extends React.Component {
           <Filter />
           <div className={classes.section__content}>
             <TabsButtons />
-            {this.props.state.error !== null ? (
-              <div className={classes.section__error}>{this.props.state.error}</div>
-            ) : null}
-            {this.props.state.loading ? (
+            {error !== null ? <div className={classes.section__error}>{error}</div> : null}
+            {loading ? (
               <div className={classes.section__loading}>
                 <h3 className={classes.section__loadtext}>Loading</h3>
                 <Spin size="large" />
               </div>
             ) : (
-              <TicketsList props={this.props.state} />
+              <TicketsList />
             )}
           </div>
         </div>
