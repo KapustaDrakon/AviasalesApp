@@ -7,7 +7,6 @@ import classes from './TicketsList.module.scss';
 
 const TicketsList = (props) => {
   let idx = 100;
-  console.log(props.state);
   let visibleTickets;
 
   const { error, tickets, showTickets, filter } = props.state;
@@ -80,48 +79,35 @@ const TicketsList = (props) => {
   };
 
   const filterCheck = () => {
-    console.log(filter);
     if (filter.includes('empty') || tickets.length === 0) {
-      console.log(tickets);
-      console.log('if - 1');
-      return <div className={classes.list__notfound}>Рейсов, подходящих под занные фильтры не найдено.</div>;
+      return <div className={classes.list__notfound}>Рейсов, подходящих под заданные фильтры не найдено.</div>;
     }
     if (filter.includes('all')) {
       visibleTickets = tickets;
-      console.log(visibleTickets);
-      console.log('if - 2');
       return showContent(visibleTickets);
     }
     if (filter.length === 1 && filter.includes('without_changes')) {
       visibleTickets = tickets.filter((ticket) => {
         return ticket.segments[0].stops.length === 0 && ticket.segments[1].stops.length === 0;
       });
-      console.log(visibleTickets);
-      console.log('if - 3');
       return showContent(visibleTickets);
     }
     if (filter.length === 1 && filter.includes('one_change')) {
       visibleTickets = tickets.filter((ticket) => {
         return ticket.segments[0].stops.length === 1 && ticket.segments[1].stops.length === 1;
       });
-      console.log(visibleTickets);
-      console.log('if - 4');
       return showContent(visibleTickets);
     }
     if (filter.length === 1 && filter.includes('two_changes')) {
       visibleTickets = tickets.filter((ticket) => {
         return ticket.segments[0].stops.length === 2 && ticket.segments[1].stops.length === 2;
       });
-      console.log(visibleTickets);
-      console.log('if - 5');
       return showContent(visibleTickets);
     }
     if (filter.length === 1 && filter.includes('three_changes')) {
       visibleTickets = tickets.filter((ticket) => {
         return ticket.segments[0].stops.length === 3 && ticket.segments[1].stops.length === 3;
       });
-      console.log(visibleTickets);
-      console.log('if - 6');
       return showContent(visibleTickets);
     }
     if (filter.length === 2 && filter.includes('without_changes') && filter.includes('one_change')) {
@@ -131,8 +117,6 @@ const TicketsList = (props) => {
           (ticket.segments[1].stops.length === 0 || ticket.segments[1].stops.length === 1)
         );
       });
-      console.log(visibleTickets);
-      console.log('if - 7');
       return showContent(visibleTickets);
     }
     if (filter.length === 2 && filter.includes('without_changes') && filter.includes('two_changes')) {
@@ -142,8 +126,6 @@ const TicketsList = (props) => {
           (ticket.segments[1].stops.length === 0 || ticket.segments[1].stops.length === 2)
         );
       });
-      console.log(visibleTickets);
-      console.log('if - 8');
       return showContent(visibleTickets);
     }
     if (filter.length === 2 && filter.includes('without_changes') && filter.includes('three_changes')) {
@@ -153,8 +135,6 @@ const TicketsList = (props) => {
           (ticket.segments[1].stops.length === 0 || ticket.segments[1].stops.length === 3)
         );
       });
-      console.log(visibleTickets);
-      console.log('if - 9');
       return showContent(visibleTickets);
     }
     if (filter.length === 2 && filter.includes('one_change') && filter.includes('two_changes')) {
@@ -164,8 +144,6 @@ const TicketsList = (props) => {
           (ticket.segments[1].stops.length === 1 || ticket.segments[1].stops.length === 2)
         );
       });
-      console.log(visibleTickets);
-      console.log('if - 10');
       return showContent(visibleTickets);
     }
     if (filter.length === 2 && filter.includes('one_change') && filter.includes('three_changes')) {
@@ -175,8 +153,6 @@ const TicketsList = (props) => {
           (ticket.segments[1].stops.length === 1 || ticket.segments[1].stops.length === 3)
         );
       });
-      console.log(visibleTickets);
-      console.log('if - 11');
       return showContent(visibleTickets);
     }
     if (filter.length === 2 && filter.includes('two_changes') && filter.includes('three_changes')) {
@@ -186,8 +162,6 @@ const TicketsList = (props) => {
           (ticket.segments[1].stops.length === 2 || ticket.segments[1].stops.length === 3)
         );
       });
-      console.log(visibleTickets);
-      console.log('if - 12');
       return showContent(visibleTickets);
     }
     if (
@@ -206,8 +180,6 @@ const TicketsList = (props) => {
             ticket.segments[1].stops.length === 2)
         );
       });
-      console.log(visibleTickets);
-      console.log('if - 13');
       return showContent(visibleTickets);
     }
     if (
@@ -226,8 +198,6 @@ const TicketsList = (props) => {
             ticket.segments[1].stops.length === 3)
         );
       });
-      console.log(visibleTickets);
-      console.log('if - 14');
       return showContent(visibleTickets);
     }
     if (
@@ -246,8 +216,6 @@ const TicketsList = (props) => {
             ticket.segments[1].stops.length === 3)
         );
       });
-      console.log(visibleTickets);
-      console.log('if - 15');
       return showContent(visibleTickets);
     }
     if (
@@ -266,8 +234,6 @@ const TicketsList = (props) => {
             ticket.segments[1].stops.length === 3)
         );
       });
-      console.log(visibleTickets);
-      console.log('if - 16');
       return showContent(visibleTickets);
     }
   };

@@ -1,0 +1,14 @@
+export const CHEAPEST = 'CHEAPEST';
+export const FASTEST = 'FASTEST';
+export const OPTIMAL = 'OPTIMAL';
+export const ALL = 'ALL';
+export const WITHOUT_CHANGES = 'WITHOUT_CHANGES';
+export const ONE_CHANGE = 'ONE_CHANGE';
+export const TWO_CHANGES = 'TWO_CHANGES';
+export const THREE_CHANGES = 'THREE_CHANGES';
+export const EMPTY = 'EMPTY';
+export const FETCH_TICKETS_START = 'FETCH_TICKETS_START';
+export const FETCH_TICKETS_SUCCESS = 'FETCH_TICKETS_SUCCESS';
+export const FETCH_TICKETS_DONE = 'FETCH_TICKETS_DONE';
+export const FETCH_TICKETS_FAIL = 'FETCH_TICKETS_FAIL';
+export const AMOUNT_SHOW_TICKETS = 'AMOUNT_SHOW_TICKETS';
