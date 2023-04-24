@@ -1,63 +1,63 @@
 import { React } from 'react';
 import { connect } from 'react-redux';
 
-import './Filter.scss';
+import classes from './Filter.module.scss';
 
 const Filter = (props) => {
   return (
-    <form id="form_filter" className="filter__container">
-      <div className="filter__title">КОЛИЧЕСТВО ПЕРЕСАДОК</div>
-      <div className="filter__checkbox-container">
-        <label className="filter__label">
+    <form id="form_filter" className={classes['filter__container']}>
+      <div className={classes['filter__title']}>КОЛИЧЕСТВО ПЕРЕСАДОК</div>
+      <div className={classes['filter__checkbox-container']}>
+        <label className={classes['filter__label']}>
           <input
             type="checkbox"
             id="all"
             name="Все"
-            className="filter__input"
+            className={classes['filter__input']}
             defaultChecked
             onChange={() => props.filterChange('all')}
           />
           Вce
         </label>
-        <label className="filter__label">
+        <label className={classes['filter__label']}>
           <input
             type="checkbox"
             id="without_changes"
             name="Без пересадок"
-            className="filter__input"
+            className={classes['filter__input']}
             defaultChecked
             onChange={() => props.filterChange('without_changes')}
           />
           Без пересадок
         </label>
-        <label className="filter__label">
+        <label className={classes['filter__label']}>
           <input
             type="checkbox"
             id="one_change"
             name="1 пересадка"
-            className="filter__input"
+            className={classes['filter__input']}
             defaultChecked
             onChange={() => props.filterChange('one_change')}
           />
           1 пересадка
         </label>
-        <label className="filter__label">
+        <label className={classes['filter__label']}>
           <input
             type="checkbox"
             id="two_changes"
             name="2 пересадки"
-            className="filter__input"
+            className={classes['filter__input']}
             defaultChecked
             onChange={() => props.filterChange('two_changes')}
           />
           2 пересадки
         </label>
-        <label className="filter__label">
+        <label className={classes['filter__label']}>
           <input
             type="checkbox"
             id="three_changes"
             name="3 пересадки"
-            className="filter__input"
+            className={classes['filter__input']}
             defaultChecked
             onChange={() => props.filterChange('three_changes')}
           />

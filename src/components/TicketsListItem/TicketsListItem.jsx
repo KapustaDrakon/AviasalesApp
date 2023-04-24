@@ -1,8 +1,6 @@
 import React from 'react';
 import { format } from 'date-fns';
 
-//import S7Logo from '../../assets/images/S7Logo.svg';
-
 import classes from './TicketsListItem.module.scss';
 
 const TicketsListItem = ({ ticket }) => {
