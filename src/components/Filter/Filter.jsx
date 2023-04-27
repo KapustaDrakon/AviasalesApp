@@ -12,7 +12,7 @@ const Filter = (props) => {
           <input
             type="checkbox"
             id="all"
-            name="Все"
+            name="filter"
             className={classes['filter__input']}
             defaultChecked
             onChange={() => props.filterChange('all')}
@@ -23,7 +23,7 @@ const Filter = (props) => {
           <input
             type="checkbox"
             id="without_changes"
-            name="Без пересадок"
+            name="filter"
             className={classes['filter__input']}
             defaultChecked
             onChange={() => props.filterChange('without_changes')}
@@ -34,7 +34,7 @@ const Filter = (props) => {
           <input
             type="checkbox"
             id="one_change"
-            name="1 пересадка"
+            name="filter"
             className={classes['filter__input']}
             defaultChecked
             onChange={() => props.filterChange('one_change')}
@@ -45,7 +45,7 @@ const Filter = (props) => {
           <input
             type="checkbox"
             id="two_changes"
-            name="2 пересадки"
+            name="filter"
             className={classes['filter__input']}
             defaultChecked
             onChange={() => props.filterChange('two_changes')}
@@ -56,7 +56,7 @@ const Filter = (props) => {
           <input
             type="checkbox"
             id="three_changes"
-            name="3 пересадки"
+            name="filter"
             className={classes['filter__input']}
             defaultChecked
             onChange={() => props.filterChange('three_changes')}
@@ -77,76 +77,34 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     filterChange: (id) => {
-      let action = { type: id.toUpperCase() };
-      dispatch(action);
-
-      const buttonAll = document.getElementById('all');
-      const buttonWithoutChanges = document.getElementById('without_changes');
-      const buttonOneChange = document.getElementById('one_change');
-      const buttonTwoChanges = document.getElementById('two_changes');
-      const buttonThreeChanges = document.getElementById('three_changes');
-
-      if (id === 'all' && buttonAll.checked === true) {
-        buttonWithoutChanges.checked = true;
-        buttonOneChange.checked = true;
-        buttonTwoChanges.checked = true;
-        buttonThreeChanges.checked = true;
-        dispatch(action);
-      } else if (id === 'all') {
-        buttonWithoutChanges.checked = false;
-        buttonOneChange.checked = false;
-        buttonTwoChanges.checked = false;
-        buttonThreeChanges.checked = false;
-        action = { type: 'EMPTY' };
-        dispatch(action);
-      }
-
-      if (
-        buttonWithoutChanges.checked === true &&
-        buttonOneChange.checked === true &&
-        buttonTwoChanges.checked === true &&
-        buttonThreeChanges.checked === true
-      ) {
-        buttonAll.checked = true;
-      }
-
-      if (
-        buttonWithoutChanges.checked === false &&
-        buttonOneChange.checked === true &&
-        buttonTwoChanges.checked === true &&
-        buttonThreeChanges.checked === true
-      ) {
-        buttonAll.checked = false;
-      }
-
-      if (
-        buttonWithoutChanges.checked === true &&
-        buttonOneChange.checked === false &&
-        buttonTwoChanges.checked === true &&
-        buttonThreeChanges.checked === true
-      ) {
-        buttonAll.checked = false;
-      }
-
-      if (
-        buttonWithoutChanges.checked === true &&
-        buttonOneChange.checked === true &&
-        buttonTwoChanges.checked === false &&
-        buttonThreeChanges.checked === true
-      ) {
-        buttonAll.checked = false;
-      }
-
-      if (
-        buttonWithoutChanges.checked === true &&
-        buttonOneChange.checked === true &&
-        buttonTwoChanges.checked === true &&
-        buttonThreeChanges.checked === false
-      ) {
-        buttonAll.checked = false;
-      }
+      dispatch(filterChanger(id));
     },
   };
+};
+
+const filterChanger = (id) => {
+  let action = { type: id.toUpperCase() };
+
+  const buttons = document.getElementsByName('filter');
+  const buttonsList = [...buttons];
+  const buttonsListWithoutAll = buttonsList.slice(1, buttonsList.length);
+
+  if (id === 'all' && buttonsList[0].checked === true) {
+    buttonsList.map((button) => (button.checked = true));
+  } else if (id === 'all') {
+    buttonsList.map((button) => (button.checked = false));
+    action = { type: 'EMPTY' };
+  }
+
+  // const func = (button) => {
+  //   return !button.checked;
+  // };
+
+  if (buttonsListWithoutAll.every((button) => !button.checked)) {
+    buttonsList[0].checked = false;
+  } else buttonsList[0].checked = true;
+
+  return action;
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filter);
