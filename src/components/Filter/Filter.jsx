@@ -96,10 +96,6 @@ const filterChanger = (id) => {
     action = { type: 'EMPTY' };
   }
 
-  // const func = (button) => {
-  //   return !button.checked;
-  // };
-
   if (buttonsListWithoutAll.every((button) => !button.checked)) {
     buttonsList[0].checked = false;
   } else buttonsList[0].checked = true;
